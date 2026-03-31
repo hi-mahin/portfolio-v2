@@ -282,7 +282,7 @@ document.querySelectorAll('a, button, .proj-card, .skill-item, .trait-item, .soc
 // ==================== BOOT SEQUENCE ====================
 (function () {
   const lines = [
-    'MAHIN.SYS v2.0 — BOOT SEQUENCE',
+    'BEN.SYS v2.0 — BOOT SEQUENCE',
     '================================',
     '',
     '[OK] Loading kernel modules...',
@@ -291,7 +291,7 @@ document.querySelectorAll('a, button, .proj-card, .skill-item, .trait-item, .soc
     '[OK] Connecting neural interface...',
     '[OK] Loading project database...',
     '',
-    '> Identity: MAHIN',
+    '> Identity: BEN',
     '> Role: Developer | AI | Security',
     '> Status: ONLINE',
     '',
@@ -451,16 +451,16 @@ function formSubmit(e) {
 
 // ==================== CHAT ====================
 const qnaData = [
-  { q: "Who is Mahin?", a: "Mahin is a passionate learner, programmer, and creative thinker who blends technology with philosophy and art. He loves building systems, exploring cybersecurity, and expressing emotions through poetry." },
-  { q: "What are Mahin's main skills?", a: "Mahin is skilled in Python programming, backend development, automation, ethical hacking basics, and AI integration. He also has experience in photography and creative writing." },
-  { q: "What is Mahin currently working on?", a: "Mahin is working on multiple projects including an advanced Discord bot, AI systems, automation tools, and building structured data systems for large-scale storage and training." },
-  { q: "What are Mahin's goals?", a: "Mahin wants to master AI, cybersecurity, and system building. He also aims to study abroad, build powerful tools, and create meaningful digital and creative work." },
-  { q: "What kind of content does Mahin like to create?", a: "Mahin creates emotional poetry, thoughtful writings, and is interested in building impactful digital tools and visual content like photography." },
-  { q: "What makes Mahin different from others?", a: "Mahin combines logic with emotion—he's both a technical builder and a deep thinker. He values meaning, depth, and authenticity in everything he does." },
-  { q: "What is Mahin's learning style?", a: "Mahin prefers learning through understanding concepts, real examples, and practical application rather than memorizing syntax or theory." },
-  { q: "What are Mahin's interests outside coding?", a: "Mahin enjoys philosophy, writing poetry, exploring human emotions, and capturing moments through photography." },
-  { q: "What kind of AI assistant does Mahin want?", a: "Mahin wants an AI that feels real—emotionally intelligent, supportive, honest, and deeply connected, not robotic or surface-level." },
-  { q: "What values are important to Mahin?", a: "Mahin values authenticity, emotional depth, personal growth, discipline, creativity, and staying aligned with his beliefs and faith." }
+  { q: "Who is BEN?", a: "BEN is a passionate learner, programmer, and creative thinker who blends technology with philosophy and art. He loves building systems, exploring cybersecurity, and expressing emotions through poetry." },
+  { q: "What are BEN's main skills?", a: "BEN is skilled in Python programming, backend development, automation, ethical hacking basics, and AI integration. He also has experience in photography and creative writing." },
+  { q: "What is BEN currently working on?", a: "BEN is working on multiple projects including an advanced Discord bot, AI systems, automation tools, and building structured data systems for large-scale storage and training." },
+  { q: "What are BEN's goals?", a: "BEN wants to master AI, cybersecurity, and system building. He also aims to study abroad, build powerful tools, and create meaningful digital and creative work." },
+  { q: "What kind of content does BEN like to create?", a: "BEN creates emotional poetry, thoughtful writings, and is interested in building impactful digital tools and visual content like photography." },
+  { q: "What makes BEN different from others?", a: "BEN combines logic with emotion—he's both a technical builder and a deep thinker. He values meaning, depth, and authenticity in everything he does." },
+  { q: "What is BEN's learning style?", a: "BEN prefers learning through understanding concepts, real examples, and practical application rather than memorizing syntax or theory." },
+  { q: "What are BEN's interests outside coding?", a: "BEN enjoys philosophy, writing poetry, exploring human emotions, and capturing moments through photography." },
+  { q: "What kind of AI assistant does BEN want?", a: "BEN wants an AI that feels real—emotionally intelligent, supportive, honest, and deeply connected, not robotic or surface-level." },
+  { q: "What values are important to BEN?", a: "BEN values authenticity, emotional depth, personal growth, discipline, creativity, and staying aligned with his beliefs and faith." }
 ];
 
 let chatQuestionsShown = false;
