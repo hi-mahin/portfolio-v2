@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About — M.SYS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700;900&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- CURSOR -->
+<div id="cur"></div>
+<div id="cur-dot"></div>
+
+<!-- MATRIX CANVAS -->
+<canvas id="matrix"></canvas>
+
+<!-- AUDIO ELEMENT (BACKGROUND MUSIC) -->
+<audio id="bg-music" src="theme.mp3" crossorigin="anonymous" autoplay loop></audio>
+
+<!-- MUSIC CONTROL -->
+<div id="music-icon" style="position:fixed;top:20px;right:20px;font-size:1.5rem;cursor:pointer;z-index:2700;user-select:none;filter:drop-shadow(0 0 8px rgba(0,255,136,0.5));">🔊</div>
+
+<!-- FLOATING EQUALIZER -->
+<div id="equalizer" class="equalizer">
+  <div class="bar"></div>
+  <div class="bar"></div>
+  <div class="bar"></div>
+  <div class="bar"></div>
+  <div class="bar"></div>
+  <div class="bar"></div>
+  <div class="bar"></div>
+  <div class="bar"></div>
+</div>
+
+<!-- PROFILE EQUALIZER -->
+<div id="profileEqualizer" class="profile-equalizer">
+  <div class="bar"></div>
+  <div class="bar"></div>
+  <div class="bar"></div>
+  <div class="bar"></div>
+</div>
+
+<!-- MUSIC ALERT POPUP -->
+<div id="audioHelp" class="audio-help">
+  <button id="audioHelpClose" class="help-close" aria-label="Close music notification">×</button>
+  <p>Background music is playing</p>
+  <button id="audioHelpToggle" class="help-toggle">Mute</button>
+</div>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="nav-id">M<span>.</span>SYS</div>
+  <ul class="nav-links">
+    <li><a href="index.html" data-i="00">HOME</a></li>
+    <li><a href="about.html" data-i="01">ABOUT</a></li>
+    <li><a href="index.html#skills" data-i="02">SKILLS</a></li>
+    <li><a href="index.html#projects" data-i="03">PROJECTS</a></li>
+    <li><a href="index.html#contact" data-i="04">CONTACT</a></li>
+  </ul>
+  <div class="nav-status">
+    <div class="status-dot"></div>
+    <span>SYSTEM ONLINE</span>
+  </div>
+  <div class="nav-mobile" onclick="openMobileMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- Mobile Overlay -->
+<div id="mobileOverlay" style="display:none;position:fixed;inset:0;background:rgba(0,4,8,0.97);z-index:2000;flex-direction:column;align-items:center;justify-content:center;gap:28px;">
+  <div onclick="closeMobileMenu()" style="position:absolute;top:20px;right:24px;font-size:1.2rem;color:var(--g);cursor:none;">✕</div>
+  <a href="index.html" onclick="closeMobileMenu()" style="font-family:'Orbitron',monospace;font-size:1.5rem;color:var(--text);text-decoration:none;">HOME</a>
+  <a href="about.html" onclick="closeMobileMenu()" style="font-family:'Orbitron',monospace;font-size:1.5rem;color:var(--text);text-decoration:none;">ABOUT</a>
+  <a href="index.html#skills" onclick="closeMobileMenu()" style="font-family:'Orbitron',monospace;font-size:1.5rem;color:var(--text);text-decoration:none;">SKILLS</a>
+  <a href="index.html#projects" onclick="closeMobileMenu()" style="font-family:'Orbitron',monospace;font-size:1.5rem;color:var(--text);text-decoration:none;">PROJECTS</a>
+  <a href="index.html#contact" onclick="closeMobileMenu()" style="font-family:'Orbitron',monospace;font-size:1.5rem;color:var(--text);text-decoration:none;">CONTACT</a>
+</div>
+
+<!-- ABOUT -->
+<section id="about" style="min-height:100vh;display:flex;align-items:center;padding-top:80px;">
+  <div class="s-container">
+    <div class="s-header sr">
+      <div class="s-cmd">cat about.json</div>
+      <h2 class="s-title">ABOUT <em>ME</em></h2>
+      <div class="s-line"></div>
+    </div>
+    <div class="about-grid">
+      <div class="t-panel sr sr-1">
+        <div class="t-panel-bar">
+          <div class="t-dot td1"></div><div class="t-dot td2"></div><div class="t-dot td3"></div>
+          <span class="t-title-bar">about.json — READ ONLY</span>
+        </div>
+        <div class="t-body">
+          <div class="about-terminal">
+            <div><span class="t-line-num">01</span><span class="t-bracket">{</span></div>
+            <div><span class="t-line-num">02</span>&nbsp;&nbsp;<span class="t-key">"name"</span>: <span class="t-str">"Mahin"</span>,</div>
+            <div><span class="t-line-num">03</span>&nbsp;&nbsp;<span class="t-key">"role"</span>: <span class="t-str">"Developer & AI Enthusiast"</span>,</div>
+            <div><span class="t-line-num">04</span>&nbsp;&nbsp;<span class="t-key">"location"</span>: <span class="t-str">"Digital Realm"</span>,</div>
+            <div><span class="t-line-num">05</span>&nbsp;&nbsp;<span class="t-comment">/* Journey begins here */</span></div>
+            <div><span class="t-line-num">06</span>&nbsp;&nbsp;<span class="t-key">"story"</span>: <span class="t-bracket">[</span></div>
+            <div><span class="t-line-num">07</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="t-str">"Started as a curious mind"</span>,</div>
+            <div><span class="t-line-num">08</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="t-str">"Fell in love with Python"</span>,</div>
+            <div><span class="t-line-num">09</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="t-str">"Explored AI systems deeply"</span>,</div>
+            <div><span class="t-line-num">10</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="t-str">"Learned ethical hacking"</span>,</div>
+            <div><span class="t-line-num">11</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="t-str">"Photography + writing too"</span></div>
+            <div><span class="t-line-num">12</span>&nbsp;&nbsp;<span class="t-bracket">]</span>,</div>
+            <div><span class="t-line-num">13</span>&nbsp;&nbsp;<span class="t-key">"thinking_style"</span>: <span class="t-str">"logical + emotional"</span>,</div>
+            <div><span class="t-line-num">14</span>&nbsp;&nbsp;<span class="t-key">"status"</span>: <span class="t-val">true</span>,</div>
+            <div><span class="t-line-num">15</span>&nbsp;&nbsp;<span class="t-key">"open_to_work"</span>: <span class="t-val">true</span></div>
+            <div><span class="t-line-num">16</span><span class="t-bracket">}</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="about-traits">
+        <div class="trait-item sr sr-1">
+          <div class="trait-icon">🤖</div>
+          <div>
+            <div class="trait-title">AI ENGINEER</div>
+            <div class="trait-desc">Building intelligent systems — from NLP pipelines to automation bots. AI isn't just a tool; it's a new way of thinking.</div>
+          </div>
+        </div>
+        <div class="trait-item sr sr-2">
+          <div class="trait-icon">🛡️</div>
+          <div>
+            <div class="trait-title">SECURITY RESEARCHER</div>
+            <div class="trait-desc">Exploring vulnerabilities ethically. Understanding attack surfaces to build more resilient digital infrastructure.</div>
+          </div>
+        </div>
+        <div class="trait-item sr sr-3">
+          <div class="trait-icon">📸</div>
+          <div>
+            <div class="trait-title">VISUAL CREATOR</div>
+            <div class="trait-desc">Photography teaches composition. Creative writing sharpens communication. Art and code live closer together than you'd think.</div>
+          </div>
+        </div>
+        <div class="trait-item sr sr-4">
+          <div class="trait-icon">⚡</div>
+          <div>
+            <div class="trait-title">AUTOMATION ARCHITECT</div>
+            <div class="trait-desc">If a task can be scripted, it should be. Building systems that work while I sleep — efficiency by design.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:80px;text-align:center;">
+      <a href="index.html" class="btn-terminal"><span>← BACK_TO_HOME</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-logo">M.SYS</div>
+  <div class="foot-copy">// build.break.learn.repeat — © 2025 MAHIN</div>
+  <div class="foot-sys">SYSTEM UPTIME: <span id="uptime">00:00:00</span></div>
+</footer>
+
+<!-- AI CHAT -->
+<button id="chat-btn" onclick="toggleChat()" title="AI Assistant">⚡</button>
+<div id="chat-window">
+  <div class="chat-head">
+    <div class="chat-head-title">⚡ MAHIN.AI ASSISTANT</div>
+    <button class="chat-close" onclick="toggleChat()">[ CLOSE ]</button>
+  </div>
+  <div class="chat-msgs" id="chat-msgs">
+    <div class="msg bot">Hello! Select a question to learn more about Mahin.</div>
+  </div>
+</div>
+
+<script src="main.js"></script>
+</body>
+</html>

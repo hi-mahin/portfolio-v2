@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Mahin — AI Developer, Cybersecurity Enthusiast, Creative Technologist. Building intelligent systems from the ground up.">
+  <meta name="keywords" content="Mahin, developer, AI, cybersecurity, Python, portfolio, ethical hacking, automation">
+  <title>MAHIN.SYS — Developer Interface v2.0</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700;900&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- CURSOR -->
+<div id="cur"></div>
+<div id="cur-dot"></div>
+
+<!-- MATRIX CANVAS -->
+<canvas id="matrix"></canvas>
+
+<!-- BOOT SCREEN -->
+<div id="boot">
+  <pre id="boot-text"></pre>
+  <div class="boot-bar"><div class="boot-bar-fill"></div></div>
+</div>
+
+<!-- AUDIO ELEMENT (BACKGROUND MUSIC) -->
+<audio id="bg-music" src="theme.mp3" crossorigin="anonymous" autoplay loop></audio>
+
+<!-- MUSIC CONTROL -->
+<div id="music-icon" style="position:fixed;top:20px;right:20px;font-size:1.5rem;cursor:pointer;z-index:2700;user-select:none;filter:drop-shadow(0 0 8px rgba(0,255,136,0.5));">🔊</div>
+
+<!-- FLOATING EQUALIZER -->
+<div id="equalizer" class="equalizer">
+  <div class="bar"></div>
+  <div class="bar"></div>
+  <div class="bar"></div>
+  <div class="bar"></div>
+  <div class="bar"></div>
+</div>
+
+<!-- PROFILE EQUALIZER -->
+<div id="profileEqualizer" class="profile-equalizer">
+  <div class="bar"></div>
+  <div class="bar"></div>
+  <div class="bar"></div>
+  <div class="bar"></div>
+</div>
+
+<!-- MUSIC ALERT POPUP -->
+<div id="audioHelp" class="audio-help">
+  <button id="audioHelpClose" class="help-close" aria-label="Close music notification">×</button>
+  <p>Background music is playing</p>
+  <button id="audioHelpToggle" class="help-toggle">Mute</button>
+</div>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="nav-id">M<span>.</span>SYS</div>
+  <ul class="nav-links">
+    <li><a href="#hero" data-i="00">HOME</a></li>
+    <li><a href="about.html" data-i="01">ABOUT</a></li>
+    <li><a href="#skills" data-i="02">SKILLS</a></li>
+    <li><a href="#projects" data-i="03">PROJECTS</a></li>
+    <li><a href="#contact" data-i="04">CONTACT</a></li>
+  </ul>
+  <div class="nav-status">
+    <div class="status-dot"></div>
+    <span>SYSTEM ONLINE</span>
+  </div>
+  <div class="nav-mobile" onclick="openMobileMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- Mobile Overlay -->
+<div id="mobileOverlay" style="display:none;position:fixed;inset:0;background:rgba(0,4,8,0.97);z-index:2000;flex-direction:column;align-items:center;justify-content:center;gap:28px;">
+  <div onclick="closeMobileMenu()" style="position:absolute;top:20px;right:24px;font-size:1.2rem;color:var(--g);cursor:none;">✕</div>
+  <a href="#hero" onclick="closeMobileMenu()" style="font-family:'Orbitron',monospace;font-size:1.5rem;color:var(--text);text-decoration:none;">HOME</a>
+  <a href="about.html" onclick="closeMobileMenu()" style="font-family:'Orbitron',monospace;font-size:1.5rem;color:var(--text);text-decoration:none;">ABOUT</a>
+  <a href="#skills" onclick="closeMobileMenu()" style="font-family:'Orbitron',monospace;font-size:1.5rem;color:var(--text);text-decoration:none;">SKILLS</a>
+  <a href="#projects" onclick="closeMobileMenu()" style="font-family:'Orbitron',monospace;font-size:1.5rem;color:var(--text);text-decoration:none;">PROJECTS</a>
+  <a href="#contact" onclick="closeMobileMenu()" style="font-family:'Orbitron',monospace;font-size:1.5rem;color:var(--text);text-decoration:none;">CONTACT</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-grid-bg"></div>
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="hero-prompt">IDENTITY LOADED</div>
+      <h1 class="hero-name">MAHIN</h1>
+      <div class="hero-role">Developer · Hacker · Creator</div>
+      <p class="hero-tagline">Building AI • Exploring Security • Creating Digital Systems</p>
+      <div class="hero-typed"><span id="typed-el"></span><span class="cursor-blink"></span></div>
+      <div class="hero-btns">
+        <a href="#projects" class="btn-terminal"><span>VIEW_PROJECTS</span></a>
+        <a href="#contact" class="btn-ghost">CONTACT_ME</a>
+        <a href="#" class="btn-ghost" download style="border-color:rgba(255,204,0,0.3);color:var(--y);">RESUME↓</a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="profile-frame">
+        <div class="profile-ring"></div>
+        <div class="profile-inner">
+          <div class="profile-monogram">M</div>
+          <div class="profile-scan"></div>
+        </div>
+        <div class="profile-coords pc-top">LAT:23.8103 LON:90.4125</div>
+        <div class="profile-coords pc-right">IDENTITY VERIFIED</div>
+        <div class="hero-corner hc-tl" style="position:absolute;top:8px;left:8px;"></div>
+        <div class="hero-corner hc-tr" style="position:absolute;top:8px;right:8px;"></div>
+        <div class="hero-corner hc-bl" style="position:absolute;bottom:8px;left:8px;"></div>
+        <div class="hero-corner hc-br" style="position:absolute;bottom:8px;right:8px;"></div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <span>SCROLL</span>
+    <div class="scroll-arrows">
+      <i></i><i></i><i></i>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="s-container">
+    <div class="s-header sr">
+      <div class="s-cmd">ls -la skills/</div>
+      <h2 class="s-title">SKILL <em>MATRIX</em></h2>
+      <div class="s-line"></div>
+    </div>
+    <div class="skills-tabs sr">
+      <button class="s-tab active" onclick="switchTab(this,'tab-prog')">PROGRAMMING</button>
+      <button class="s-tab" onclick="switchTab(this,'tab-ai')">AI & AUTOMATION</button>
+      <button class="s-tab" onclick="switchTab(this,'tab-sec')">CYBERSECURITY</button>
+      <button class="s-tab" onclick="switchTab(this,'tab-tools')">TOOLS & TECH</button>
+    </div>
+    <div id="tab-prog" class="skills-panel active">
+      <div class="skill-item" data-level="90"><div class="sk-name">Python</div><div class="sk-bar"><div class="sk-fill" data-w="90"></div></div><div class="sk-level"><span>ADVANCED</span><span>90%</span></div></div>
+      <div class="skill-item" data-level="75"><div class="sk-name">JavaScript</div><div class="sk-bar"><div class="sk-fill" data-w="75"></div></div><div class="sk-level"><span>PROFICIENT</span><span>75%</span></div></div>
+      <div class="skill-item" data-level="70"><div class="sk-name">HTML / CSS</div><div class="sk-bar"><div class="sk-fill" data-w="70"></div></div><div class="sk-level"><span>PROFICIENT</span><span>70%</span></div></div>
+      <div class="skill-item" data-level="60"><div class="sk-name">Bash / Shell</div><div class="sk-bar"><div class="sk-fill" data-w="60"></div></div><div class="sk-level"><span>INTERMEDIATE</span><span>60%</span></div></div>
+      <div class="skill-item" data-level="55"><div class="sk-name">SQL</div><div class="sk-bar"><div class="sk-fill" data-w="55"></div></div><div class="sk-level"><span>INTERMEDIATE</span><span>55%</span></div></div>
+      <div class="skill-item" data-level="45"><div class="sk-name">C (Basics)</div><div class="sk-bar"><div class="sk-fill" data-w="45"></div></div><div class="sk-level"><span>LEARNING</span><span>45%</span></div></div>
+    </div>
+    <div id="tab-ai" class="skills-panel">
+      <div class="skill-item"><div class="sk-name">Machine Learning</div><div class="sk-bar"><div class="sk-fill" data-w="78"></div></div><div class="sk-level"><span>ADVANCED</span><span>78%</span></div></div>
+      <div class="skill-item"><div class="sk-name">LLM Integration</div><div class="sk-bar"><div class="sk-fill" data-w="80"></div></div><div class="sk-level"><span>ADVANCED</span><span>80%</span></div></div>
+      <div class="skill-item"><div class="sk-name">NLP / Text AI</div><div class="sk-bar"><div class="sk-fill" data-w="72"></div></div><div class="sk-level"><span>PROFICIENT</span><span>72%</span></div></div>
+      <div class="skill-item"><div class="sk-name">Prompt Engineering</div><div class="sk-bar"><div class="sk-fill" data-w="88"></div></div><div class="sk-level"><span>EXPERT</span><span>88%</span></div></div>
+      <div class="skill-item"><div class="sk-name">Automation Scripts</div><div class="sk-bar"><div class="sk-fill" data-w="85"></div></div><div class="sk-level"><span>ADVANCED</span><span>85%</span></div></div>
+      <div class="skill-item"><div class="sk-name">Web Scraping</div><div class="sk-bar"><div class="sk-fill" data-w="82"></div></div><div class="sk-level"><span>ADVANCED</span><span>82%</span></div></div>
+    </div>
+    <div id="tab-sec" class="skills-panel">
+      <div class="skill-item"><div class="sk-name">Ethical Hacking</div><div class="sk-bar"><div class="sk-fill" data-w="65"></div></div><div class="sk-level"><span>INTERMEDIATE</span><span>65%</span></div></div>
+      <div class="skill-item"><div class="sk-name">OSINT</div><div class="sk-bar"><div class="sk-fill" data-w="70"></div></div><div class="sk-level"><span>PROFICIENT</span><span>70%</span></div></div>
+      <div class="skill-item"><div class="sk-name">Kali Linux</div><div class="sk-bar"><div class="sk-fill" data-w="68"></div></div><div class="sk-level"><span>PROFICIENT</span><span>68%</span></div></div>
+      <div class="skill-item"><div class="sk-name">Network Security</div><div class="sk-bar"><div class="sk-fill" data-w="60"></div></div><div class="sk-level"><span>INTERMEDIATE</span><span>60%</span></div></div>
+      <div class="skill-item"><div class="sk-name">Burp Suite</div><div class="sk-bar"><div class="sk-fill" data-w="55"></div></div><div class="sk-level"><span>INTERMEDIATE</span><span>55%</span></div></div>
+      <div class="skill-item"><div class="sk-name">CTF Challenges</div><div class="sk-bar"><div class="sk-fill" data-w="62"></div></div><div class="sk-level"><span>INTERMEDIATE</span><span>62%</span></div></div>
+    </div>
+    <div id="tab-tools" class="skills-panel">
+      <div class="skill-item"><div class="sk-name">Git / GitHub</div><div class="sk-bar"><div class="sk-fill" data-w="88"></div></div><div class="sk-level"><span>ADVANCED</span><span>88%</span></div></div>
+      <div class="skill-item"><div class="sk-name">Linux / CLI</div><div class="sk-bar"><div class="sk-fill" data-w="80"></div></div><div class="sk-level"><span>ADVANCED</span><span>80%</span></div></div>
+      <div class="skill-item"><div class="sk-name">Docker</div><div class="sk-bar"><div class="sk-fill" data-w="58"></div></div><div class="sk-level"><span>INTERMEDIATE</span><span>58%</span></div></div>
+      <div class="skill-item"><div class="sk-name">VS Code</div><div class="sk-bar"><div class="sk-fill" data-w="95"></div></div><div class="sk-level"><span>EXPERT</span><span>95%</span></div></div>
+      <div class="skill-item"><div class="sk-name">REST APIs</div><div class="sk-bar"><div class="sk-fill" data-w="78"></div></div><div class="sk-level"><span>ADVANCED</span><span>78%</span></div></div>
+      <div class="skill-item"><div class="sk-name">Figma</div><div class="sk-bar"><div class="sk-fill" data-w="50"></div></div><div class="sk-level"><span>INTERMEDIATE</span><span>50%</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="s-container">
+    <div class="s-header sr">
+      <div class="s-cmd">ls projects/ --sort=date</div>
+      <h2 class="s-title">PROJECT <em>LOG</em></h2>
+      <div class="s-line"></div>
+    </div>
+    <div class="projects-grid">
+      <div class="proj-card sr sr-1">
+        <div class="proj-id">PROJ-001 // AI</div>
+        <div class="proj-title">AUTONOMOUS TASK ENGINE</div>
+        <p class="proj-desc">LLM-powered agent that parses natural language, decomposes tasks, and executes multi-step workflows autonomously across services.</p>
+        <div class="proj-stack"><span class="proj-tag">Python</span><span class="proj-tag">GPT-4</span><span class="proj-tag">FastAPI</span><span class="proj-tag">Redis</span></div>
+        <div class="proj-footer"><a href="https://github.com/mahinn" class="proj-link" target="_blank" rel="noopener">OPEN_REPO →</a><span class="proj-status">ACTIVE</span></div>
+      </div>
+      <div class="proj-card sr sr-2">
+        <div class="proj-id">PROJ-002 // SECURITY</div>
+        <div class="proj-title">OSINT RECON FRAMEWORK</div>
+        <p class="proj-desc">Automated open-source intelligence tool for ethical footprinting — aggregates digital traces into structured threat profiles.</p>
+        <div class="proj-stack"><span class="proj-tag">Python</span><span class="proj-tag">Shodan</span><span class="proj-tag">Scrapy</span></div>
+        <div class="proj-footer"><a href="https://github.com/mahinn" class="proj-link" target="_blank" rel="noopener">OPEN_REPO →</a><span class="proj-status">STABLE</span></div>
+      </div>
+      <div class="proj-card sr sr-3">
+        <div class="proj-id">PROJ-003 // NLP</div>
+        <div class="proj-title">NEURAL SENTIMENT CORE</div>
+        <p class="proj-desc">Real-time multi-source sentiment analysis engine with live dashboard, emotion mapping, and custom model fine-tuning.</p>
+        <div class="proj-stack"><span class="proj-tag">Python</span><span class="proj-tag">HuggingFace</span><span class="proj-tag">React</span></div>
+        <div class="proj-footer"><a href="https://github.com/mahinn" class="proj-link" target="_blank" rel="noopener">OPEN_REPO →</a><span class="proj-status">LIVE</span></div>
+      </div>
+      <div class="proj-card sr sr-1">
+        <div class="proj-id">PROJ-004 // CRYPTO</div>
+        <div class="proj-title">ZERO-KNOWLEDGE VAULT</div>
+        <p class="proj-desc">AES-256 encrypted personal data manager with zero-knowledge architecture. Local-first. Nothing leaves your machine.</p>
+        <div class="proj-stack"><span class="proj-tag">JavaScript</span><span class="proj-tag">Node.js</span><span class="proj-tag">Electron</span></div>
+        <div class="proj-footer"><a href="https://github.com/mahinn" class="proj-link" target="_blank" rel="noopener">OPEN_REPO →</a><span class="proj-status">STABLE</span></div>
+      </div>
+      <div class="proj-card sr sr-2">
+        <div class="proj-id">PROJ-005 // WEB</div>
+        <div class="proj-title">AUTONOMOUS SCRAPE MESH</div>
+        <p class="proj-desc">Distributed web scraping infrastructure with proxy rotation, JS rendering, adaptive rate limiting, and multi-format export.</p>
+        <div class="proj-stack"><span class="proj-tag">Python</span><span class="proj-tag">Playwright</span><span class="proj-tag">PostgreSQL</span></div>
+        <div class="proj-footer"><a href="https://github.com/mahinn" class="proj-link" target="_blank" rel="noopener">OPEN_REPO →</a><span class="proj-status">ACTIVE</span></div>
+      </div>
+      <div class="proj-card sr sr-3">
+        <div class="proj-id">PROJ-006 // CREATIVE</div>
+        <div class="proj-title">AI WRITING COMPANION</div>
+        <p class="proj-desc">Context-aware creative writing assistant with tone control, style presets, and long-form memory for consistent narrative output.</p>
+        <div class="proj-stack"><span class="proj-tag">TypeScript</span><span class="proj-tag">LLM API</span><span class="proj-tag">Svelte</span></div>
+        <div class="proj-footer"><a href="https://github.com/mahinn" class="proj-link" target="_blank" rel="noopener">OPEN_REPO →</a><span class="proj-status">BETA</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GITHUB -->
+<section id="github">
+  <div class="s-container">
+    <div class="s-header sr">
+      <div class="s-cmd">git remote -v</div>
+      <h2 class="s-title">GITHUB <em>TERMINAL</em></h2>
+      <div class="s-line"></div>
+    </div>
+    <div class="gh-terminal t-panel sr">
+      <div class="t-panel-bar">
+        <div class="t-dot td1"></div><div class="t-dot td2"></div><div class="t-dot td3"></div>
+        <span class="t-title-bar">bash — zsh — ~/mahin</span>
+      </div>
+      <div class="gh-body">
+        <div class="gh-cmd">whoami</div>
+        <div class="gh-output">mahin — developer, ai enthusiast, security learner</div>
+        <br>
+        <div class="gh-cmd">gh repo list --limit 5</div>
+        <div class="gh-output">
+          ★ <a href="https://github.com/mahinn" target="_blank" rel="noopener">autonomous-task-engine</a> &nbsp;&nbsp; <span class="gh-highlight">Python</span> &nbsp; public<br>
+          ★ <a href="https://github.com/mahinn" target="_blank" rel="noopener">osint-recon-framework</a> &nbsp;&nbsp; <span class="gh-highlight">Python</span> &nbsp; public<br>
+          ★ <a href="https://github.com/mahinn" target="_blank" rel="noopener">neural-sentiment-core</a> &nbsp;&nbsp;&nbsp; <span class="gh-highlight">Python</span> &nbsp; public<br>
+          ★ <a href="https://github.com/mahinn" target="_blank" rel="noopener">zero-knowledge-vault</a> &nbsp;&nbsp;&nbsp;&nbsp; <span class="gh-highlight">JavaScript</span> &nbsp; public<br>
+          ★ <a href="https://github.com/mahinn" target="_blank" rel="noopener">ai-writing-companion</a> &nbsp;&nbsp;&nbsp;&nbsp; <span class="gh-highlight">TypeScript</span> &nbsp; public<br>
+        </div>
+        <br>
+        <div class="gh-cmd">gh stats --user mahin</div>
+        <div class="gh-output">
+          repos: <span class="gh-highlight">15+</span> &nbsp;|&nbsp; commits: <span class="gh-highlight">200+</span> &nbsp;|&nbsp; stars: <span class="gh-highlight">growing</span> &nbsp;|&nbsp; languages: <span class="gh-highlight">6</span>
+        </div>
+        <br>
+        <div class="gh-cta">
+          <a href="https://github.com/mahinn" target="_blank" rel="noopener" class="btn-terminal"><span>OPEN_GITHUB_PROFILE →</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="s-container">
+    <div class="s-header sr">
+      <div class="s-cmd">./contact.sh --init</div>
+      <h2 class="s-title">OPEN <em>CHANNEL</em></h2>
+      <div class="s-line"></div>
+    </div>
+    <div class="contact-grid">
+      <div class="sr sr-1">
+        <div style="font-size:0.75rem;color:var(--muted);line-height:1.8;margin-bottom:8px;">Available for projects, collaborations, and interesting conversations. Response time: <span style="color:var(--g);">fast</span>.</div>
+        <div class="social-list">
+          <a href="https://github.com/mahinn" class="social-item" target="_blank" rel="noopener">
+            <div class="social-icon">⬡</div>
+            <div><div class="social-label">GITHUB</div><div class="social-handle">github.com/mahinn</div></div>
+          </a>
+          <a href="mailto:mahin@example.com" class="social-item">
+            <div class="social-icon">✉</div>
+            <div><div class="social-label">EMAIL</div><div class="social-handle">mahin@example.com</div></div>
+          </a>
+          <a href="https://facebook.com" class="social-item" target="_blank" rel="noopener">
+            <div class="social-icon">ƒ</div>
+            <div><div class="social-label">FACEBOOK</div><div class="social-handle">fb.com/mahin</div></div>
+          </a>
+          <a href="#" class="social-item">
+            <div class="social-icon">𝕏</div>
+            <div><div class="social-label">TWITTER / X</div><div class="social-handle">@mahin_dev</div></div>
+          </a>
+        </div>
+      </div>
+      <form class="contact-form sr sr-2" action="https://formsubmit.co/benjirmahin@gmail.com" method="POST">
+        <div class="form-field">
+          <label>IDENTIFIER</label>
+          <input type="text" name="name" placeholder="your_name" required>
+        </div>
+        <div class="form-field">
+          <label>SIGNAL_ADDRESS</label>
+          <input type="email" name="email" placeholder="your@email.com" required>
+        </div>
+        <div class="form-field">
+          <label>TRANSMISSION</label>
+          <textarea name="message" placeholder="Type your message here..." required></textarea>
+        </div>
+        <button type="submit" class="btn-execute"><span>EXECUTE_SEND →</span></button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-logo">M.SYS</div>
+  <div class="foot-copy">// build.break.learn.repeat — © 2025 MAHIN</div>
+  <div class="foot-sys">SYSTEM UPTIME: <span id="uptime">00:00:00</span></div>
+</footer>
+
+<!-- AI CHAT -->
+<button id="chat-btn" onclick="toggleChat()" title="AI Assistant">🤖</button>
+<div id="chat-window">
+  <div class="chat-head">
+    <div class="chat-head-title">⚡ MAHIN.AI ASSISTANT</div>
+    <button class="chat-close" onclick="toggleChat()">[ CLOSE ]</button>
+  </div>
+  <div class="chat-msgs" id="chat-msgs">
+    <div class="msg bot">Hello! Select a question to learn more about Mahin.</div>
+  </div>
+</div>
+
+<script src="main.js"></script>
+</body>
+</html>
